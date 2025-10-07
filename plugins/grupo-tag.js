@@ -5,8 +5,6 @@ const handler = async (msg, { conn, isOwner }) => {
     const isGroup = chatId.endsWith('@g.us')
     const isBotMessage = msg.key.fromMe
 
-    await conn.sendMessage(chatId, { react: { text: '🔊', key: msg.key } })
-
     if (!isGroup) {
       await conn.sendMessage(chatId, { text: '⚠️ *Este comando solo se puede usar en grupos.*' }, { quoted: msg })
       return
@@ -23,17 +21,35 @@ const handler = async (msg, { conn, isOwner }) => {
 
     const participants = metadata.participants
     const mentionIds = participants.map(p => p.id)
-    
-    if (msg.message.conversation || msg.message.extendedTextMessage) {
+
+    let messageToSend = null
+
+    // Si se respondió a un mensaje
+    if (msg.message.extendedTextMessage?.contextInfo?.quotedMessage) {
+      const quoted = msg.message.extendedTextMessage.contextInfo.quotedMessage
+      const type = Object.keys(quoted)[0]
+      const content = quoted[type]
+
+      if (type === 'conversation' || type === 'extendedTextMessage') {
+        const text = quoted.conversation || quoted.extendedTextMessage?.text || ''
+        messageToSend = { text, mentions: mentionIds }
+      } else {
+        messageToSend = { [type]: content, mentions: mentionIds }
+      }
+    } else if (msg.message.conversation || msg.message.extendedTextMessage) {
+      // Si solo escribiste un mensaje de texto con args
       const text = msg.message.conversation || msg.message.extendedTextMessage?.text || ''
-      await conn.sendMessage(chatId, { text, mentions: mentionIds }, { quoted: msg })
+      if (!text.trim()) {
+        await conn.sendMessage(chatId, { text: '⚠️ Debes responder a un mensaje o escribir un texto para etiquetar.' }, { quoted: msg })
+        return
+      }
+      messageToSend = { text, mentions: mentionIds }
+    } else {
+      await conn.sendMessage(chatId, { text: '⚠️ Debes responder a un mensaje o escribir un texto para etiquetar.' }, { quoted: msg })
       return
     }
 
-    const messageType = Object.keys(msg.message)[0]
-    const originalMessage = msg.message[messageType]
-
-    await conn.sendMessage(chatId, { [messageType]: originalMessage, mentions: mentionIds }, { quoted: msg })
+    await conn.sendMessage(chatId, messageToSend, { quoted: msg })
 
   } catch (error) {
     console.error('❌ Error en el comando tagall:', error)
