@@ -1,3 +1,4 @@
+
 const handler = async (msg, { conn, isOwner }) => {
   try {
     const chatId = msg.key.remoteJid
@@ -24,29 +25,33 @@ const handler = async (msg, { conn, isOwner }) => {
 
     let messageToSend = null
 
-    // Si se respondió a un mensaje
-    if (msg.message.extendedTextMessage?.contextInfo?.quotedMessage) {
-      const quoted = msg.message.extendedTextMessage.contextInfo.quotedMessage
+    // Si el mensaje es una respuesta a otro mensaje
+    const quoted = msg.message.extendedTextMessage?.contextInfo?.quotedMessage
+    if (quoted) {
       const type = Object.keys(quoted)[0]
       const content = quoted[type]
 
       if (type === 'conversation' || type === 'extendedTextMessage') {
         const text = quoted.conversation || quoted.extendedTextMessage?.text || ''
+        if (!text.trim()) {
+          await conn.sendMessage(chatId, { text: '⚠️ El mensaje al que respondes está vacío.' }, { quoted: msg })
+          return
+        }
         messageToSend = { text, mentions: mentionIds }
+      } else if (type === 'imageMessage' || type === 'videoMessage' || type === 'audioMessage' || type === 'documentMessage' || type === 'stickerMessage') {
+        messageToSend = { [type]: content, mentions: mentionIds }
+        if (quoted[type].caption) messageToSend.caption = quoted[type].caption
       } else {
         messageToSend = { [type]: content, mentions: mentionIds }
       }
-    } else if (msg.message.conversation || msg.message.extendedTextMessage) {
-      // Si solo escribiste un mensaje de texto con args
-      const text = msg.message.conversation || msg.message.extendedTextMessage?.text || ''
-      if (!text.trim()) {
+    } else {
+      // Si el mensaje no es respuesta, pero tiene texto
+      const text = msg.message.conversation || msg.message.extendedTextMessage?.text
+      if (!text || !text.trim()) {
         await conn.sendMessage(chatId, { text: '⚠️ Debes responder a un mensaje o escribir un texto para etiquetar.' }, { quoted: msg })
         return
       }
       messageToSend = { text, mentions: mentionIds }
-    } else {
-      await conn.sendMessage(chatId, { text: '⚠️ Debes responder a un mensaje o escribir un texto para etiquetar.' }, { quoted: msg })
-      return
     }
 
     await conn.sendMessage(chatId, messageToSend, { quoted: msg })
