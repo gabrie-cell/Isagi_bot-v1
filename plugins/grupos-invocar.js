@@ -17,12 +17,6 @@ const handler = async (m, { conn, args }) => {
     const isAdmin = participant?.admin === 'admin' || participant?.admin === 'superadmin'
     const isBot = botNumber === senderNum
 
-    if (!isAdmin && !isBot) {
-      return await conn.sendMessage(chatId, {
-        text: '❌ Solo los administradores del grupo o el bot pueden usar este comando.'
-      }, { quoted: m })
-    }
-
     const allMentions = metadata.participants.map(p => p.id)
     let messageToForward = null
     let hasMedia = false
