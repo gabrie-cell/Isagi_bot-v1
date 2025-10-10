@@ -2,13 +2,11 @@ import { proto } from "@whiskeysockets/baileys"
 
 let handler = async (m, { conn }) => {
     let userId = m.mentionedJid?.[0] || m.sender
-    let user = global.db.data.users[userId]
-    let name = conn.getName(userId)
     let _uptime = process.uptime() * 1000
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.db.data.users).length
 
-    // Saludo decorado
+    // Saludo por hora
     let hour = new Intl.DateTimeFormat('es-PE', {
         hour: 'numeric',
         hour12: false,
@@ -30,7 +28,7 @@ let handler = async (m, { conn }) => {
         if (!plugin.help || !plugin.tags) continue
         for (let tag of plugin.tags) {
             if (!categories[tag]) categories[tag] = []
-            categories[tag].push(...plugin.help.map(cmd => `#${cmd}`))
+            categories[tag].push(...plugin.help.map(cmd => cmd))
         }
     }
 
@@ -40,8 +38,8 @@ let handler = async (m, { conn }) => {
         let title = tag.toUpperCase().replace(/_/g, ' ')
         let rows = cmds.map(cmd => ({
             title: cmd,
-            description: `[ ★ ] [ † ] [ ★ ] [ † ] [ ★ ] [ † ] `,
-            rowId: `#${cmd}`
+            description: "Comando disponible",
+            rowId: `/${cmd.replace(/[^a-z0-9]/gi,'')}` // 🔑 rowId seguro
         }))
         sections.push({ title: `♥ ${title} ♠`, rows })
     }
@@ -49,13 +47,14 @@ let handler = async (m, { conn }) => {
     // Lista final
     let listMessage = {
         text: `${saludo}\n\n👤 Usuario: @${userId.split('@')[0]}\n⏳ Tiempo activo: ${uptime}\n📜 Total usuarios: ${totalreg}`,
-        footer: "Hecho por SoyMaycol <3",
+        footer: "Hecho por SoyMaycol",
         title: "▓▒⡷ 𝐌𝐚𝐲𝐜𝐨𝐥Plus ⢾▒▓",
         buttonText: "[ ★ ] Comandos",
         sections
     }
 
-    await conn.sendMessage(m.chat, listMessage, { quoted: m, contextInfo: { mentionedJid: [m.sender, userId] } })
+    // Enviar lista
+    await conn.sendMessage(m.chat, listMessage, { quoted: m })
 }
 
 handler.help = ['menu']
