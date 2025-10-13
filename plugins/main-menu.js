@@ -40,14 +40,16 @@ let handler = async (m, { conn, args }) => {
   let emojiRandom = () => decoEmojis[Math.floor(Math.random() * decoEmojis.length)]
 
   let menuText = `
-▓▒­⡷ 𝐌𝐚𝐲𝐜𝐨𝐥ℙ𝕝𝕦𝕤 ⢾▒▓
-> *_${saludo}_*
+╔═⭓ 𖤐 𝐌𝐚𝐲𝐜𝐨𝐥 ℙ𝕝𝕦𝕤 𖤐 ⭓═╗
+        ${saludo}
+╚═══════════════════╝
 
-[🌙] Espiritu: @${userId.split('@')[0]}  
-[🏮] Tiempo mirandote: ${uptime}  
-[📜] Espiritus: ${totalreg}
+[ ☾ ] Espíritu: @${userId.split('@')[0]}  
+[ ☀︎ ] Tiempo observándote: ${uptime}  
+[ ✦ ] Espíritus registrados: ${totalreg}
 
-Hecho por el *_SoyMaycol_* <3
+━━━━━━━━━━━━━━━━━━━━━━
+Creado con esencia por: *SoyMaycol* <3
 `.trim()
 
   for (let [tag, cmds] of Object.entries(categories)) {
@@ -55,9 +57,9 @@ Hecho por el *_SoyMaycol_* <3
     let deco = emojiRandom()
     menuText += `
 
-╭─━━━ ${deco} ${tagName} ${deco} ━━━╮
+╭─━ ${deco} ${tagName} ${deco} ━╮
 ${cmds.map(cmd => `│ ▪️ ${cmd}`).join('\n')}
-╰─━━━━━━━━━━━━━━━━╯`
+╰─━━━━━━━━━━━━━╯`
   }
 
   // Enviar menú con video estilo gif
