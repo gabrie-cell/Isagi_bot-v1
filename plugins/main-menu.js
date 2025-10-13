@@ -50,18 +50,15 @@ ${cmds.map(cmd => `│ --> ${cmd}`).join('\n')}
   }
 
   await conn.sendMessage(m.chat, {
-    video: { url: 'https://raw.githubusercontent.com/SoySapo6/tmp/refs/heads/main/Permanentes/descarga.mp4' },
+    image: { url: 'https://files.catbox.moe/mk668t.jpeg' },
     caption: menuText,
-    gifPlayback: true,
+    footer: 'Hecho por SoyMaycol <3',
+    templateButtons: [
+      { urlButton: { displayText: '[ ★ ] Canal del Creador', url: 'https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R' } },
+      { urlButton: { displayText: '[ ★ ] Sobre mi Creador', url: 'https://soymaycol.is-a.dev' } }
+    ],
     contextInfo: {
-      mentionedJid: [m.sender, userId],
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363372883715167@newsletter',
-        newsletterName: '𝐒𝐨𝐲𝐌𝐚𝐲𝐜𝐨𝐥 <𝟑 • Actualizaciones',
-        serverMessageId: -1,
-      },
-      forwardingScore: 999
+      mentionedJid: [m.sender, userId]
     }
   }, { quoted: m })
 }
