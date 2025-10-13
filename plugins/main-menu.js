@@ -42,14 +42,15 @@ let handler = async (m, { conn, args }) => {
 
   let menuText = `
 ╔═⭓ 𖤐 𝐌𝐚𝐲𝐜𝐨𝐥 ℙ𝕝𝕦𝕤 𖤐 ⭓═╗
-        ${saludo}
-╚═══════════════════╝
 
 [ ☾ ] Espíritu: @${userId.split('@')[0]}  
 [ ☀︎ ] Tiempo observándote: ${uptime}  
 [ ✦ ] Espíritus registrados: ${totalreg}
 
-━━━━━━━━━━━━━━━━━━━━━━
+╚═════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━
+${saludo}
 Creado con esencia por: *SoyMaycol* <3
 `.trim()
 
