@@ -49,18 +49,23 @@ ${cmds.map(cmd => `│ --> ${cmd}`).join('\n')}
 ╰─━━━━━━━━━━━━━━━━╯`
   }
 
-  await conn.sendMessage(m.chat, {
+  const template = {
     image: { url: 'https://files.catbox.moe/mk668t.jpeg' },
     caption: menuText,
     footer: 'Hecho por SoyMaycol <3',
+    mentions: [userId],
     templateButtons: [
-      { urlButton: { displayText: '[ ★ ] Canal del Creador', url: 'https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R' } },
-      { urlButton: { displayText: '[ ★ ] Sobre mi Creador', url: 'https://soymaycol.is-a.dev' } }
-    ],
-    contextInfo: {
-      mentionedJid: [m.sender, userId]
-    }
-  }, { quoted: m })
+      { index: 1, urlButton: { displayText: '★ Canal del Creador', url: 'https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R' } },
+      { index: 2, urlButton: { displayText: '★ Sobre mi Creador', url: 'https://soymaycol.is-a.dev' } }
+    ]
+  }
+
+  try {
+    await conn.sendMessage(m.chat, template, { quoted: m })
+  } catch (e) {
+    await conn.reply(m.chat, '❌ Ocurrió un error al enviar el menú con botones.', m)
+    console.error(e)
+  }
 }
 
 handler.help = ['menu']
