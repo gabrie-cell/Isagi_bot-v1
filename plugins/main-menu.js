@@ -1,5 +1,6 @@
 // ♥ 𝙼𝚎𝚗𝚞 𝚍𝚎 𝚂𝚘𝚢𝙼𝚊𝚢𝚌𝚘𝚕 ♥
 // ᵁˢᵃ ᵉˢᵗᵉ ᶜᵒᵈⁱᵍᵒ ˢⁱᵉᵐᵖʳᵉ ᶜᵒⁿ ᶜʳᵉᵈⁱᵗᵒˢ
+import fs from 'fs'
 
 let handler = async (m, { conn, args }) => {
   let userId = m.mentionedJid?.[0] || m.sender
@@ -64,7 +65,9 @@ ${cmds.map(cmd => `│ ▪️ ${cmd}`).join('\n')}
 
   // Enviar menú con video estilo gif
   await conn.sendMessage(m.chat, {
-    video: { url: 'https://files.catbox.moe/0muc4v.mp4', gifPlayback: true },
+    await conn.sendMessage(m.chat, {
+    video: fs.readFileSync('./storage/videos/lv_0_20251012222157.mp4'),
+    gifPlayback: true,
     caption: menuText,
     gifPlayback: true,
     contextInfo: {
