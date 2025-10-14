@@ -2,8 +2,7 @@ import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
 
-global.owner = [['
-180650938249287', 'SoyMaycol', true]]
+global.owner = [['180650938249287', 'SoyMaycol', true]]
 
 global.mods = []
 global.prems = []
