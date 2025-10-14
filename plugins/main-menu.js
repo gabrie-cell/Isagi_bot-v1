@@ -62,7 +62,7 @@ Creado con esencia por: *SoyMaycol* <3
 
 ╭━ ${deco} ${tagName} ━╮
 ${cmds.map(cmd => `│ ▪️ ${cmd}`).join('\n')}
-╰─━━━━━━━━━━━━━╯`
+╰─━━━━━━━━━━━╯`
   }
 
   // Enviar menú con video estilo gif
