@@ -41,15 +41,15 @@ let handler = async (m, { conn, args }) => {
   let emojiRandom = () => decoEmojis[Math.floor(Math.random() * decoEmojis.length)]
 
   let menuText = `
-╔═⭓ 𖤐 𝐌𝐚𝐲𝐜𝐨𝐥 ℙ𝕝𝕦𝕤 𖤐 ⭓═╗
+╔ 𖤐 𝐌𝐚𝐲𝐜𝐨𝐥ℙ𝕝𝕦𝕤 𖤐 ╗
 
 [ ☾ ] Espíritu: @${userId.split('@')[0]}  
 [ ☀︎ ] Tiempo observándote: ${uptime}  
 [ ✦ ] Espíritus registrados: ${totalreg}
 
-╚═════════════════╝
+╚══════════════╝
 
-━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━
 ${saludo}
 Creado con esencia por: *SoyMaycol* <3
 `.trim()
