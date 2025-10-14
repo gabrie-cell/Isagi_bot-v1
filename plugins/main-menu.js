@@ -47,9 +47,10 @@ let handler = async (m, { conn, args }) => {
 [ ☀︎ ] Tiempo observándote: ${uptime}  
 [ ✦ ] Espíritus registrados: ${totalreg}
 
-╚══════════════╝
+╚════════════╝
 
 ━━━━━━━━━━━━━━━
+
 ${saludo}
 Creado con esencia por: *SoyMaycol* <3
 `.trim()
@@ -59,7 +60,7 @@ Creado con esencia por: *SoyMaycol* <3
     let deco = emojiRandom()
     menuText += `
 
-╭─━ ${deco} ${tagName} ${deco} ━╮
+╭━ ${deco} ${tagName} ━╮
 ${cmds.map(cmd => `│ ▪️ ${cmd}`).join('\n')}
 ╰─━━━━━━━━━━━━━╯`
   }
