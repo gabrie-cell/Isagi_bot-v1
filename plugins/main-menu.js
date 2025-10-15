@@ -67,7 +67,7 @@ ${cmds.map(cmd => `│ ▪️ ${cmd}`).join('\n')}
 
   // Enviar menú con video estilo gif
   await conn.sendMessage(m.chat, {
-    video: fs.readFileSync('./storage/videos/lv_0_20251012222157.mp4'),
+    video: fs.readFileSync('https://n.uguu.se/EsKhrXVE.mp4'),
     gifPlayback: true,
     caption: menuText,
     gifPlayback: true,
