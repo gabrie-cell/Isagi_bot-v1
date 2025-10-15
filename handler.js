@@ -216,13 +216,13 @@ export async function handler(chatUpdate) {
                 // Simplificación de las comprobaciones de baneo.
                 if (chat.isBanned && !isROwner && !['grupo-unbanchat.js', 'owner-exec.js', 'owner-exec2.js', 'grupo-delete.js'].includes(name)) return
                 if (user.banned && !isROwner) {
-                    m.reply(`🚫「✦」Tu alma ha sido marcada... Estás baneado/a y no puedes usar mis conjuros.\n\n${user.bannedReason ? `☁️ *Razón del destierro:* ${user.bannedReason}` : ''}`)
+                    m.reply(`🚫「✦」Tu personaje ha sido marcada... Estás baneado/a y no puedes usar mis rituales.\n\n${user.bannedReason ? `☁️ *Razón del destierro:* ${user.bannedReason}` : ''}`)
                     return
                 }
 
                 // Lógica de `modoadmin` mejorada y más clara
                 if (chat.modoadmin && m.isGroup && !isAdmin && !isOwner) {
-                    m.reply('🏮 | ✦ Modo Guardián invocado ✦ Solo los administradores poseen el sello para usar comandos en este grupo. 👻')
+                    m.reply('🏮 | ✦ Modo Guardián invocado ✦ Solo los administradores poseen este ritual para usar comandos en este grupo. 👻')
                     continue
                 }
 
@@ -343,13 +343,13 @@ global.dfail = (type, m, conn, usedPrefix, command) => {
 let user2 = m.pushName || 'Anónimo'
 const msg = {
 rowner: `┏━━━✦☆✦━━━┓
-🌙  El conjuro *${command}*  
-solo lo puede usar mi amo supremo.  
+🌙  El ritual *${command}*  
+solo lo puede usar mi owner.  
 (ノಠ益ಠ)ノ彡✧
 ┗━━━✦☆✦━━━┛`,
 
 owner: `╔═══ ❖ ═══╗
-🔮 El hechizo *${command}*  
+🔮 El ritual*${command}*  
 pertenece a los guardianes mayores.  
 ヽ(>∀<☆)ノ
 ╚═══ ❖ ═══╝`,
@@ -371,7 +371,7 @@ sólo funciona en salones grupales.
 ┗(＾0＾) ┓`,
 
 private: `╭(♡･ㅂ･)و ̑̑
-📜 El conjuro *${command}*  
+⭐ este comando *${command}*  
 sólo se revela en privado conmigo.
 ╰(°▽°)╯`,
 
@@ -381,18 +381,18 @@ requiere la fuerza de un admin.`,
 
 botAdmin: `╰(⇀︿⇀)つ-]═──
 🤖 Para usar *${command}*  
-necesito ser el guardián admin primero!`,
+necesito ser  admin primero!`,
 
 unreg: `｡･ﾟﾟ*(>д<)*ﾟﾟ･｡
 No estás en el libro sagrado aún!
 Regístrate con: *${usedPrefix}reg ${user2}.18*`,
 
-restrict: `🚪 Esta puerta secreta  
+restrict: `⚽ Esta cancha secreta  
 está cerrada por órdenes del creador.`
 
 }[type]
 
-if (msg) return m.reply(msg + "\n\n> ✦ Hecho por SoyMaycol <3 ✦").then(_ => m.react('🌸'))
+if (msg) return m.reply(msg + "\n\n> ✦ Hecho por gabriel <3 ✦").then(_ => m.react('🌸'))
 }
 
 let file = global.__filename(import.meta.url, true)
