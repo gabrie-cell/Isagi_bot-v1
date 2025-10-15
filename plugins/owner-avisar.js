@@ -1,0 +1,45 @@
+import fs from 'fs'
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) return m.reply(`✉️ *Usa:* ${usedPrefix + command} <mensaje>\n\nEjemplo:\n${usedPrefix + command} Hola gente, habrá mantenimiento hoy >_<`)
+  await m.react('🕓')
+
+  // Solo owner puede usar
+  if (!m.fromMe && !global.owner?.includes(m.sender.split('@')[0])) {
+    await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
+    await m.react('❌')
+    return
+  }
+
+  try {
+    let totalGrupos = Object.entries(conn.chats)
+      .filter(([id, data]) => id.endsWith('@g.us') && data.isChats)
+      .map(([id]) => id)
+
+    if (!totalGrupos.length) {
+      await m.reply('⚠️ No hay grupos activos donde enviar el aviso.')
+      await m.react('⚠️')
+      return
+    }
+
+    m.reply(`📢 Enviando aviso a *${totalGrupos.length} grupos...*`)
+    for (let id of totalGrupos) {
+      await conn.sendMessage(id, { text: `📢 *Aviso del Owner:*\n\n${text}\n\n> 🔧 _Mensaje enviado automáticamente por el bot._` })
+      await new Promise(res => setTimeout(res, 500)) // Pequeño delay para no saturar
+    }
+
+    await m.react('✅')
+    await m.reply(`✅ Aviso enviado a *${totalGrupos.length} grupos.*`)
+  } catch (e) {
+    console.error(e)
+    await m.reply('❌ Error al enviar el aviso.\n\n' + e.message)
+    await m.react('⚠️')
+  }
+}
+
+handler.help = ['avisar <texto>']
+handler.tags = ['owner']
+handler.command = ['avisar', 'broadcast', 'bcgrupos']
+handler.rowner = true // Solo para el owner real
+
+export default handler
