@@ -1,4 +1,3 @@
-// 🌸 Código hecho con amor por SoyMaycol <3 y MayCode-V2 UwU
 import { promises as fs } from 'fs'
 
 const charactersFilePath = './database/characters.json'
@@ -24,9 +23,10 @@ async function loadHarem() {
 }
 
 let handler = async (m, { conn, text }) => {
-  if (!m.fromMe && !global.owner?.includes(m.sender.split('@')[0])) {
-    await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
-    return
+  if (!m.fromMe && !global.owner.some(([id]) => m.sender.includes(id))) {
+  await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
+  await m.react('❌')
+  return
   }
 
   let cantidad = parseInt(text) || 5 // Por defecto regala a 5 personas
