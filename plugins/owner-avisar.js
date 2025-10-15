@@ -24,7 +24,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     m.reply(`📢 Enviando aviso a *${totalGrupos.length} grupos...*`)
     for (let id of totalGrupos) {
     await conn.sendMessage(id, {
-    text: `📢 *Aviso del Owner:*\n\n${text}\n\n> 🔧 _Mensaje enviado automáticamente por el bot._`,
+    text: `. . . . . . . . . . . . . . . . . . . ꒰ ♡ ꒱ ,, ⌲˘͈ᵕ˘͈\nᴹᵉⁿˢᵃʲᵉ ᵈᵉ ˢᵒʸᴹᵃʸᶜᵒˡ\n\n> ${text}\n\n𝐃𝐞 𝐩𝐚𝐫𝐭𝐞 𝐝𝐞𝐥 𝐂𝐫𝐞𝐚𝐝𝐨𝐫 <3`,
     mentions: (await conn.groupMetadata(id)).participants.map(p => p.id)
     })
     await new Promise(res => setTimeout(res, 500)) // Pequeño delay para no saturar
