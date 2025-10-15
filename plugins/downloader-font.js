@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 const fontHandler = async (m, { conn, text, command }) => {
     if (!text) {
-        return m.reply(`╭─❍「 ✦ MaycolPlus ✦ 」
+        return m.reply(`╭─❍「 ✦ isagi yoichi ✦ 」
 │
 ├─ Amor~ necesito que me des el link o nombre de la fuente  
 ├─ Ejemplo:  
