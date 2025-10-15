@@ -4,11 +4,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✉️ *Usa:* ${usedPrefix + command} <mensaje>\n\nEjemplo:\n${usedPrefix + command} Hola gente, habrá mantenimiento hoy >_<`)
   await m.react('🕓')
 
-  // Solo owner puede usar
-  if (!m.fromMe && !global.owner?.includes(m.sender.split('@')[0])) {
-    await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
-    await m.react('❌')
-    return
+  if (
+  !m.fromMe &&
+  !global.owner.some(([id]) => m.sender.includes(id))
+) {
+  await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
+  await m.react('❌')
+  return
   }
 
   try {
