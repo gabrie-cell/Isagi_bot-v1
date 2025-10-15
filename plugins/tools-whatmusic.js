@@ -16,7 +16,7 @@ const handler = async (msg, { conn }) => {
   const quotedMsg = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage  
   if (!quotedMsg || (!quotedMsg.audioMessage && !quotedMsg.videoMessage)) {  
     await conn.sendMessage(msg.key.remoteJid, {  
-      text: `✧ Responde a un *audio*, *nota de voz* o *video* y MaycolPlus con el toque perverso de Hanako-kun lo identificará… 😏`  
+      text: `✧ Responde a un *audio*, *nota de voz* o *video* y isagi con el toque perverso de isagi-yoichi lo identificará… 😏`  
     }, { quoted: msg })  
     return  
   }  
