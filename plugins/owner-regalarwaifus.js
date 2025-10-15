@@ -83,7 +83,7 @@ let handler = async (m, { conn, text }) => {
         `🎁 *¡Felicidades!* Fuiste elegido para recibir una waifu sorpresa 💖\n\n` +
         `🌸 Nombre: *${randomCharacter.name}*\n⚥ Género: *${randomCharacter.gender}*\n` +
         `✰ Valor: *${randomCharacter.value}*\n📚 Fuente: *${randomCharacter.source}*\n\n` +
-        `> Regalo enviado por *Maycol 💕*`, null)
+        `> Regalo enviado por *gabriel 💕*`, null)
       await new Promise(r => setTimeout(r, 2000)) // delay para evitar flood
     }
 
