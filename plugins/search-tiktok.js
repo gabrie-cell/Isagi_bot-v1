@@ -98,7 +98,7 @@ async function ttks(query) {
     const shuffled = videos.sort(() => 0.5 - Math.random()).slice(0, 5);
     return {
       status: true,
-      creator: "SoyMaycol",
+      creator: "gabriel",
       data: shuffled.map(video => ({
         title: video.title,
         no_wm: video.play,
