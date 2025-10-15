@@ -7,12 +7,12 @@
       const despedida = `
 ✧ ¡Ara ara~! El usuario ${userMention} ha salido de *${groupMetadata.subject}* ✧
 
-♡ Quedamos *${groupSize}* miembros en este lugar mágico
+♡ Quedamos *${groupSize}* miembros en este lugar magnético 
 ✧ Gracias por tu tiempo aquí y esperamos verte pronto~
-♡ Recuerda que las puertas siempre están abiertas para ti
+♡ Recuerda que las camchas siempre están abiertas para ti
 ✧ ¡Que tengas un buen viaje!
 
-～ Con cariño, MaycolPlus creado por SoyMaycol ～
+～ Con cariño,isagi 👻 creado por gabriel ～
 `.trim()
   
       await conn.sendMessage(m.chat, {
