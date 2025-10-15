@@ -1,4 +1,3 @@
-
 import ws from 'ws'
 
 let handler = async (m, { conn, usedPrefix }) => {
@@ -49,35 +48,11 @@ async function showSubBotInfo(conn, m, usedPrefix) {
       txt += `⚠ No hay SubBots conectados ahora...\n⤷ Únete al ritual: https://chat.whatsapp.com/HztBH5HP4kpBE86Nbuax4i?mode=ems_copy_c`
     }
 
-    let buttons = [
-      [`★ Ser SubBot ★`, `.code`, null]
-    ]
+    // 💬 Sin botones, solo mensaje simple:
+    await conn.sendMessage(m.chat, {
+      text: txt.trim() + `\n\n★ Para ser SubBot usa: .code`
+    }, { quoted: m })
 
-    try {
-      await conn.sendButton(m.chat, txt.trim(),
-        `Invoca tu sombra y conviértete en SubBot`,
-        null, buttons, m)
-    } catch {
-      try {
-        let buttonList = [
-          {
-            buttonId: `.code`,
-            buttonText: { displayText: `★ Ser SubBot ★` },
-            type: 1
-          }
-        ]
-        await conn.sendMessage(m.chat, {
-          text: txt.trim(),
-          footer: `Invoca tu sombra y conviértete en SubBot`,
-          buttons: buttonList,
-          headerType: 1
-        }, { quoted: m })
-      } catch {
-        await conn.sendMessage(m.chat, {
-          text: txt.trim() + `\n\n★ Para ser SubBot usa: .code`
-        }, { quoted: m })
-      }
-    }
   } catch (e) {
     console.error('Error en showSubBotInfo:', e)
     await conn.sendMessage(m.chat, { text: '☠ Error en el plano de los SubBots...' }, { quoted: m })
