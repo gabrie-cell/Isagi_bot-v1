@@ -1,9 +1,9 @@
 let handler = async (m, { conn }) => {
-  const name = 'SoyMaycol'
-  const number = '51921826291'
-  const email = 'soymaycol.cn@gmail.com'
-  const org = 'Programador de Webs,Bots y mas'
-  const note = 'Tengo 12 años XD'
+  const name = 'gabriel'
+  const number = '51941247696'
+  const email = 'doxeosgr@gmail.com'
+  const org = 'pequeño programador de Webs,Bots y mas'
+  const note = 'Tengo 5 años XD'
 
   const vcard = `
 BEGIN:VCARD
