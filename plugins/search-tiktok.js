@@ -41,7 +41,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     let cap = `💮 ◈ 𝗧𝗶𝗸𝗧𝗼𝗸 ◈ 💮\n\n` +
               `🎴 ✦ 𝗧𝗶́𝘁𝘂𝗹𝗼  : ${videos[0].title}\n` +
               `🌸 ✦ 𝗕𝘂́𝘀𝗾𝘂𝗲𝗱𝗮 : ${text}\n\n` +
-              `👻 𝗕𝗼𝘁: isagi bot| Creado por gabfiel`;
+              `👻 𝗕𝗼𝘁: isagi bot| Creado por gabriel`;
 
     // Preparar los medios a enviar
     let medias = videos.map((video, index) => ({
