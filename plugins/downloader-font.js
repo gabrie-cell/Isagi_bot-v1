@@ -31,7 +31,7 @@ const fontHandler = async (m, { conn, text, command }) => {
         const fontName = data.font || "font";
         const downloadUrl = data.url;
 
-        const waitMsg = `╭─❍「 ✦ MaycolPlus ✦ 」
+        const waitMsg = `╭─❍「 ✦ isagiyoichi✦ 」
 │
 ├─ Mmm~ encontré tu fuente:  
 │   「❀」${fontName}  
@@ -61,7 +61,8 @@ const fontHandler = async (m, { conn, text, command }) => {
 
     } catch (error) {
         console.error("Error descargando font:", error);
-        await m.reply(`╭─❍「 ✦ MaycolPlus ✦ 」
+        await m.reply(`╭─❍「 ✦ Isagiyoichi
+✦ 」
 │
 ├─ Ay amor... algo falló  
 ├─ ${error.message}  
