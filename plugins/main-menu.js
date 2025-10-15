@@ -52,7 +52,7 @@ let handler = async (m, { conn, args }) => {
 ━━━━━━━━━━━━━━━
 
 ${saludo}
-Creado con esencia por: *SoyMaycol* <3
+Creado con esencia por: *gabriel* <3
 `.trim()
 
   for (let [tag, cmds] of Object.entries(categories)) {
