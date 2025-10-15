@@ -20,7 +20,7 @@ await m.react("🔥");
 try {  
     const res = await yts(text);  
     if (!res || !res.videos || res.videos.length === 0) {  
-        return m.reply(`╭─❍「 ✦ MaycolPlus ✦ 」
+        return m.reply(`╭─❍「 ✦ isagibot ✦ 」
 │
 ├─ Mmm... no encuentro nada así bebé
 ├─ Intenta con algo más específico
