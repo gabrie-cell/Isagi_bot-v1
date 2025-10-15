@@ -54,8 +54,8 @@ ${usedPrefix + command} Hanako.16`);
 • Nombre: ${user.name}  
 • Edad: ${user.age} años  
 
-> No te Olvides *_Seguirme_*: https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R
-¡Bienvenid@ al Reino Hanako! 👻🖤  
+> No te Olvides *_Seguirme_*: https://whatsapp.com/channel/0029Vb6nOKBD8SDp0aFtCD3R
+¡Bienvenid@ al Reino de Gabriel! 👻🖤  
 ╚════ஓ๑♡๑ஓ════╝`);
 
   // ─ ✦ Aviso al grupo ✦ ─
@@ -63,7 +63,7 @@ ${usedPrefix + command} Hanako.16`);
   let hora = new Date().toLocaleTimeString("es-PE", { hour: "2-digit", minute: "2-digit" });
   let aviso = `
 ━━━━━ ◦ 𝐀𝐯𝐢𝐬𝐨 ◦ ━━━━━
-[★] Espiritu: *${user.name}*  
+[★] usuario: *${user.name}*  
 [★] Edad: *${user.age} años*  
 [★] Hora registrada: *${hora}*  
 > Gracias ${user.name} por Usarme :3`;
