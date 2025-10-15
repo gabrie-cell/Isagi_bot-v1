@@ -4,7 +4,7 @@ import path from 'path'
 export async function before(m, { conn }) {
   try {
 
-    let nombreBot = global.namebot || 'isagi-bot'
+    let nombreBot = global.namebot || 'isagibot'
     let bannerFinal = 'https://raw.githubusercontent.com/SoySapo6/tmp/refs/heads/main/Permanentes/images%20(8).jpeg'
 
 
