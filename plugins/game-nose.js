@@ -119,7 +119,7 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
       if (!m.quoted) return conn.reply(m.chat, '⚠️ *Debes responder al mensaje de la persona a quien quieres robar!*\n\n> Hecho por SoyMaycol <3', m)
       
       const victim = m.quoted.sender
-      if (sender === victim) return conn.reply(m.chat, '🚫 *No puedes robarte a ti mismo, genio!*\n\n> Hecho por SoyMaycol <3', m)
+      if (sender === victim) return conn.reply(m.chat, '🚫 *No puedes robarte a ti mismo, genio!*\n\n> Hecho por Gabriel :3', m)
       
       const victimData = inicializarBraindotData(victim)
       
