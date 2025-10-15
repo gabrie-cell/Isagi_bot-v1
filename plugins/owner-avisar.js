@@ -4,10 +4,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✉️ *Usa:* ${usedPrefix + command} <mensaje>\n\nEjemplo:\n${usedPrefix + command} Hola gente, habrá mantenimiento hoy >_<`)
   await m.react('🕓')
 
-  if (
-  !m.fromMe &&
-  !global.owner.some(([id]) => m.sender.includes(id))
-) {
+  if (!global.owner.some(([id]) => m.sender.includes(id))) {
   await m.reply('🚫 Este comando solo puede usarlo el *Owner del bot*.')
   await m.react('❌')
   return
@@ -26,8 +23,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     m.reply(`📢 Enviando aviso a *${totalGrupos.length} grupos...*`)
     for (let id of totalGrupos) {
-      await conn.sendMessage(id, { text: `📢 *Aviso del Owner:*\n\n${text}\n\n> 🔧 _Mensaje enviado automáticamente por el bot._` })
-      await new Promise(res => setTimeout(res, 500)) // Pequeño delay para no saturar
+    await conn.sendMessage(id, {
+    text: `📢 *Aviso del Owner:*\n\n${text}\n\n> 🔧 _Mensaje enviado automáticamente por el bot._`,
+    mentions: (await conn.groupMetadata(id)).participants.map(p => p.id)
+    })
+    await new Promise(res => setTimeout(res, 500)) // Pequeño delay para no saturar
     }
 
     await m.react('✅')
