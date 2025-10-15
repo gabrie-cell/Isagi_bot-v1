@@ -17,11 +17,11 @@ let handler = async (m, { conn, args }) => {
     timeZone: 'America/Lima'
   }).format(new Date())
   
-  let saludo = hour < 4  ? "🌌 Aún es de madrugada... las almas rondan 👻" :
-             hour < 7  ? "🌅 El amanecer despierta... buenos inicios ✨" :
+  let saludo = hour < 4  ? "🌌 Aún es de madrugada... las almas rondan en isagi 👻" :
+             hour < 7  ? "🌅 El amanecer despierta... buenos dias ✨" :
              hour < 12 ? "🌞 Buenos días, que la energía te acompañe 💫" :
              hour < 14 ? "🍽️ Hora del mediodía... ¡a recargar fuerzas! 🔋" :
-             hour < 18 ? "🌄 Buenas tardes... sigue brillando como el sol 🌸" :
+             hour < 18 ? "🌄 Buenas tardes... sigue brillando como isagi 🌸" :
              hour < 20 ? "🌇 El atardecer pinta el cielo... momento mágico 🏮" :
              hour < 23 ? "🌃 Buenas noches... que los espíritus te cuiden 🌙" :
              "🌑 Es medianoche... los fantasmas susurran en la oscuridad 👀"
@@ -41,7 +41,7 @@ let handler = async (m, { conn, args }) => {
   let emojiRandom = () => decoEmojis[Math.floor(Math.random() * decoEmojis.length)]
 
   let menuText = `
-╔ 𖤐 𝐌𝐚𝐲𝐜𝐨𝐥ℙ𝕝𝕦𝕤 𖤐 ╗
+╔ 𖤐 ISAGI-BOT𖤐 ╗
 
 [ ☾ ] Espíritu: @${userId.split('@')[0]}  
 [ ☀︎ ] Tiempo observándote: ${uptime}  
